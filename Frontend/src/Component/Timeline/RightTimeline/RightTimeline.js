@@ -13,7 +13,6 @@ function RightTimeline(props){
         <div>
             <div className="content_rgt">
             <UploadTimeline setTrue = {func} />
-            {/* <UploadTimeline  /> */}
 
             <InviteTimeline />
              <CategoryTimeline />

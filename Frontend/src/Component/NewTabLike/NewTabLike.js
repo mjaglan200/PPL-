@@ -25,10 +25,8 @@ const NewTabLike=(props)=>{
    
 const email=localStorage.getItem('email')
     // access local storage user
- 
 
     const onchangeText=(a)=>{
-
         settext(a.target.value)
        
     }
@@ -64,7 +62,6 @@ const email=localStorage.getItem('email')
 
  }
       
-
     useEffect(() => {
 
         
@@ -77,11 +74,11 @@ const email=localStorage.getItem('email')
         
 		
     });
+    
     useEffect(()=>{
         axios.post(Address.address[4],userdata).then(response =>{
         setCount(response.data.Like.length);
-        // console.log(response)
-        // setChecked(response.data.like)
+ 
     })
     },[])
 

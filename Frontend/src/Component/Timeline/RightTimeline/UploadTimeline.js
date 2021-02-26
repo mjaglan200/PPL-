@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Address from '../../../config/config'
+import { connect } from 'react-redux';
+import action from '../../../Redux/action'
+import store from '../../../Redux/store'
+
 // import { useParams } from 'react-router-dom'
 
 
@@ -13,7 +17,7 @@ function UploadTimeline(props) {
 		const [dataReceived, setdataReceived] = useState({});
 		const [Form, setForm] = useState("");
 		const [post,setPost] = useState([])
-		const fun = props.setTrue;
+		const [Trueval,setTrueval] = useState(false)
 
 	let submitbtn = e => {
 		const dat=new Date().toLocaleString()
@@ -38,19 +42,16 @@ console.log(Description)
 		data.append("Daate",Daate)
 
 		axios.post(Address.address[9], data).then(response => {
-		fun(true);
+			// setTrueval(true)
+			props.dispatch(action.show_image(true))
+	
 		setdataReceived(response);
-			
-			
 
 		});	
 				};
 
 	
 	//Get AXIOS CALL FETCH IMAGE DETAILS
-
-
-
 
 	const createform = () => {
 		setForm(true);
@@ -129,4 +130,18 @@ console.log(Description)
 	);
 }
 
-export default UploadTimeline;
+
+
+function mapStateToProps(state) {
+    console.log('map------------',state)
+    return {
+     Flags:state.Flags,
+    
+
+    
+    };
+ 
+  }
+  
+  export default connect(mapStateToProps)(UploadTimeline);
+// export default UploadTimeline

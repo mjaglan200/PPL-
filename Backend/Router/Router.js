@@ -6,11 +6,6 @@ const api=require('../API/api')
 var multer  = require('multer')
 var  nodemailer = require('nodemailer')
 const Address=require('../Config/Config')
-// const jwt = require('jsonwebtoken');
-
-
-
-
 
 const storage=multer.diskStorage(
     {
@@ -22,7 +17,6 @@ const storage=multer.diskStorage(
 )
 
 var upload=multer({ storage:storage})
-
 
 router.post(Address.data[1],async (req, res)=>{
     let email=req.body.email
@@ -79,7 +73,6 @@ router.post(Address.data[2], async (req, res)=>{
                 console.log(obj)
                 res.send(obj)
                 } 
-
         });    
     }
 
@@ -165,9 +158,6 @@ router.post(Address.data[4], async(req, res) =>{
         })
        
     })
-
-
-
 
 
     router.post(Address.data[9],(req,res)=>{

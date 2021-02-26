@@ -3,20 +3,12 @@ import React,{useState, useEffect} from 'react';
 import axios from 'axios'
 import RightTimeline from './RightTimeline/RightTimeline'
 import LeftTimeline from './LeftTimeline/LeftTimeline'
+import { connect } from 'react-redux';
+import action from '../../Redux/action'
 
-
-// import FooterTimeline from './FooterTimeline'
 
 function Timeline(){
-  const [checkTrue,setTrue]= useState(false)
-  const checkvalue = (value) =>{
-    setTrue(value)
-  }
-  const myFun = (value) =>{
-    // console.log("hello mohittttt")
-    setTrue(value)
 
-  }
     return(
         <div>
           <meta charSet="utf-8" />
@@ -24,12 +16,8 @@ function Timeline(){
          
           <div className="container">
           <div className="content">
-         <RightTimeline setTrue = {myFun}/>
-          {/* <RightTimeline /> */}
-
-          <LeftTimeline check = {checkTrue} fun = {checkvalue}/>
-          {/* <LeftTimeline /> */}
-
+         <RightTimeline />
+          <LeftTimeline />
           </div>
           <div className="clear" />
 
@@ -38,4 +26,6 @@ function Timeline(){
       </div>
     )
 }
+
+
 export default Timeline;

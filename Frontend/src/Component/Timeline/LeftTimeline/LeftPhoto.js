@@ -2,35 +2,26 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {Link,useHistory} from 'react-router-dom'
 import Address from '../../../config/config'
-
-// import Comment from './Button_like_comment/Comment'
-// import Share from './Button_like_comment/Share'
-// import Flag from './Button_like_comment/Flag'
-// import Like from './Button_like_comment/Like'
+import { connect } from 'react-redux';
+import action from '../../../Redux/action'
+import store from '../../../Redux/store'
 
 const LeftPhoto=(props)=>{
-
+	
 	const [post, setPost] = useState([]);
-	
-	
-	console.log("Inside Left Photo ----",props)
+	const [getTrue,setTrue] = useState(props.flag)
+console.log("Inside Right Photo ----",props.Flags)
 
-	const set = props.set;
-	if(props.check)
-	{
-
-	  set(false)
-
-	}
-
-	
+	useEffect(() => {
+		setTrue(props.Flags)
+	})
 	useEffect(() => {
 		axios.get(Address.address[9]).then(response => {
 			console.log(response.data);
 			setPost(response.data);
 		});
 		
-	}, [props.check]);
+	}, [getTrue]);
 
 	return (
 		<div>
@@ -103,4 +94,16 @@ const LeftPhoto=(props)=>{
 	);
 };
 
-export default LeftPhoto;
+
+
+function mapStateToProps(state) {
+    console.log('map------------',state)
+    return {
+     Flags:state.Flags,
+ 
+    };
+ 
+  }
+  
+  export default connect(mapStateToProps)(LeftPhoto);
+// export default LeftPhoto
